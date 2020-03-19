@@ -4,8 +4,6 @@
 #include "stdafx.h"
 #pragma comment(lib, "Ws2_32.lib")
 
-#define PASSWORD "pass123"
-
 SERVER_INFO g_server_info;
 
 PCLIENT_INFO
@@ -152,23 +150,7 @@ DWORD  RecvThread(SOCKET comm_fd)
 	char str[100];
 
 	memset(str, 0, sizeof(str));
-
-	AsyncRecieve(comm_fd, str, sizeof(str));
-
-	if (strcmp(str, PASSWORD) != 0)
-	{
-		printf("Client %zd enter wrong password\r\n", comm_fd);
-
-		shutdown(comm_fd, SD_SEND);
-
-		ClientExit(comm_fd);
-
-		return 0;
-	}
-	else
-	{
-		printf("Client %zd enter correct password\r\n", comm_fd);
-	}
+	PCLIENT_INFO pClientInfo = GetClientByComm(comm_fd);
 
 	while (1)
 	{
@@ -188,6 +170,8 @@ DWORD  RecvThread(SOCKET comm_fd)
 		}
 
 		printf("Client %zd said: %s\r\n", comm_fd, str);
+
+		MsgProc(pClientInfo, str, recieved);
 
 		SendMessageToClients(str, comm_fd);
 	}

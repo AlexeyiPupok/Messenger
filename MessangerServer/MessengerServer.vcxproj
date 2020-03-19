@@ -100,11 +100,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MessengerServer.cpp" />
+    <ClCompile Include="MsgProtoServer.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="list.h" />
     <ClInclude Include="MessengerServer.h" />
+    <ClInclude Include="MsgProto.h" />
+    <ClInclude Include="MsgProtoServer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
