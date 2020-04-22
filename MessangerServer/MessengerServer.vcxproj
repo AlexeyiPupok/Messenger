@@ -99,12 +99,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MD5.cpp" />
     <ClCompile Include="MessengerServer.cpp" />
     <ClCompile Include="MsgProtoServer.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="list.h" />
+    <ClInclude Include="MD5.h" />
     <ClInclude Include="MessengerServer.h" />
     <ClInclude Include="MsgProto.h" />
     <ClInclude Include="MsgProtoServer.h" />

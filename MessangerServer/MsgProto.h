@@ -4,5 +4,6 @@
 #define REGISTER_USER   'UGER' //
 #define AUTH_USER		'HTUA' //
 #define PASSWORD		'SSAP' //
+#define LOGIN			'NGOL' //
 #define MESSAGE			'GSEM' //
 #define LOGOUT			'TIXE' //

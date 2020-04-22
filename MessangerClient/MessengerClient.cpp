@@ -26,6 +26,7 @@ int main(int argc, char **argv)
 {
 	WSADATA wsaData;
 
+	//Подключение клиента к серверу
 	if (WSAStartup(WINSOCK_VERSION, &wsaData))
 	{
 		printf("winsock not be initialized !\r\n");
@@ -49,19 +50,18 @@ int main(int argc, char **argv)
 
 	connect(sockfd, (struct sockaddr *)&servaddr, sizeof(servaddr));
 
+	//Создание потока обработки от сервера
 	HANDLE thread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)RecvThread, (LPVOID)sockfd, 0, NULL);
 
 	printf("Connected. Error %d\r\n", GetLastError());
 
-	printf("Enter password \r\n");
-
-	scanf_s("%s", sendline, (unsigned)_countof(sendline));
-	send(sockfd, sendline, (int)strlen(sendline), 0);
-
+	 
 	while (1)
 	{
 		memset(sendline, 0, 100);
-		scanf_s("%s", sendline, (unsigned)_countof(sendline));
+		//Ожидание ввода сообщения от пользователя
+		scanf_s("%[^\n]", sendline, (unsigned)_countof(sendline));
+		//И отправка его серверу
 		send(sockfd, sendline, (int)strlen(sendline), 0);
 	}
 }

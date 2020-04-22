@@ -3,7 +3,8 @@ typedef enum ClientState
 {
 	Disconnected,
 	Connected,
-	Registred,
+	Registred_log,
+	Registred_pass,
 	Login,
 	Loginned
 }ClientState;
@@ -21,3 +22,6 @@ typedef struct _SERVER_INFO
 }SERVER_INFO, *PSERVER_INFO;
 
 DWORD  RecvThread(SOCKET comm_fd);
+
+VOID
+SendMessageToClient(char* message, size_t comm_fd);
