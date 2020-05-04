@@ -60,7 +60,9 @@ int main(int argc, char **argv)
 	{
 		memset(sendline, 0, 100);
 		//Ожидание ввода сообщения от пользователя
-		scanf_s("%[^\n]", sendline, (unsigned)_countof(sendline));
+		//для пробело
+		//scanf_s("%[^\n]", sendline, (unsigned)_countof(sendline));
+		scanf_s("%s", sendline, (unsigned)_countof(sendline));
 		//И отправка его серверу
 		send(sockfd, sendline, (int)strlen(sendline), 0);
 	}
